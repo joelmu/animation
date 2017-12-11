@@ -8,13 +8,52 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style media="screen">
-
+    .media{height: 350px;
+        width: 1050px;
+    }
+    .move{
+      transition: all 1s ease;
+      position: relative;
+      width: 4200px;
+      left: 300px;
+    }
+    #reservearea{
+      transition: all 1s;
+      height: 0;
+      opacity: 0;
+      background-color: grey;
+      transform: rotateX(-90deg);
+      transform-origin: top;
+      border: 1px black solid;
+      border-radius: 10px;
+    }
+    .visible{
+      opacity: 1 !important;
+      transform: rotateX(0deg) !important;
+      height: 75% !important;
+    }
+    .schedulelist{
+      transition: all 1s ease;
+    }
+    #first{
+      opacity: 1;
+    }
+    #second{
+      opacity: 0;
+    }
+    #third{
+      opacity: 0;
+    }
+    #fourth{
+      opacity: 0;
+    }
     </style>
 
   </head>
-  <body>
+  <body onload="create()">
 
     <!--Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -58,29 +97,25 @@
 
 <!--movie schedule -->
 
-<ul class="list-unstyled">
-    <li class="media">
-        <img class="d-flex align-self-center mr-3" src="https://placehold.it/64x64" alt="Generic placeholder image">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">List-based media object</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        </div>
-    </li>
-    <li class="media">
-        <img class="d-flex align-self-center mr-3" src="https://placehold.it/64x64" alt="Generic placeholder image">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">List-based media object</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        </div>
-    </li>
-    <li class="media">
-        <img class="d-flex align-self-center mr-3" src="https://placehold.it/64x64" alt="Generic placeholder image">
-        <div class="media-body">
-            <h5 class="mt-0 mb-1">List-based media object</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        </div>
-    </li>
-</ul>
+<div class="schedule">
+  <div class="timechooser d-flex justify-content-center">
+    <button type="button" name="today"  class="btn btn-outline-secondary waves-effect" onclick="today()">Today</button>
+    <button type="button" name="tomorrow" class="btn btn-outline-secondary waves-effect" onclick="tomorrow()">Tomorrow</button>
+    <button type="button" name="dayafter" class="btn btn-outline-secondary waves-effect" onclick="dayafter()">17.12</button>
+    <button type="button" name="dayafter2" class="btn btn-outline-secondary waves-effect" onclick="dayafter2()">18.12</button>
+  </div>
+
+  <div class="move d-flex flex-row" id="move">
+    <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="first">
+    </ul>
+    <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="second">
+    </ul>
+    <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="third">
+    </ul>
+    <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="fourth">
+    </ul>
+  </div>
+</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -89,6 +124,148 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    function reserve(){
+        document.getElementById("reservearea").classList.toggle("visible");
+    }
+    function create(){
+      var movies = [{id: "1",
+                    poster: "https://www.movieposter.com/posters/archive/main/9/A70-4902",
+                    name: "The Matrix",
+                    genre: "Sci-Fi",
+                    duration: "100min",
+                    agelimit: "16+",
+                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+                    room1: ["13:00", "16:00", "20:00"],
+                    room2: ["17:00", "21:00"],
+                    room3: ["14:00"]
+                  },
+                  {id:"2",
+                    poster: "https://imgc.allpostersimages.com/img/posters/titanic_u-L-F4S6CQ0.jpg",
+                    name: "Titanic",
+                    genre: "Drama",
+                    duration: "80min",
+                    agelimit: "12+",
+                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+                    room1: ["13:00", "15:00", "20:00"],
+                    room2: ["17:00", "21:00"],
+                    room3: ["14:00"]
+                  },
+                  {id: "3",
+                    poster: "http://www.joblo.com/posters/images/full/jigsawpost5.jpg",
+                    name: "Jigsaw",
+                    genre: "Horror",
+                    duration: "92min",
+                    agelimit: "16+",
+                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+                    room1: ["10:00", "12:00", "17:00"],
+                    room2: ["17:00", "21:00"],
+                    room3: ["14:00"]
+                  },
+                  {id: "4",
+                    poster: "http://www.joblo.com/posters/images/full/American-Assassin-Official-Poster.jpg",
+                    name: "American Assassin",
+                    genre: "Action",
+                    duration: "112min",
+                    agelimit: "16+",
+                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+                    room1: ["12:00", "15:30"],
+                    room2: ["17:10", "21:20"],
+                    room3: ["14:00", "17:00"]
+                  },
+                  {id: "5",
+                    poster: "https://cdn3.digitalartsonline.co.uk/cmsdata/slideshow/3662115/baby-driver-rory-hi-res.jpg",
+                    name: "Baby Driver",
+                    genre: "Action",
+                    duration: "150min",
+                    agelimit: "12+",
+                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+                    room1: ["13:00", "15:00", "20:00"],
+                    room2: ["17:00", "21:00"],
+                    room3: ["14:00"]
+                  }];
+        for (var i = 0; i < movies.length; i++) {
+        $('.schedulelist').append('<li class="media" style="background-color:'+movies[i].bc+'">\n' +
+                  '<img class="d-flex align-self-center mr-3" alt="poster" width="200" height="300" id="poster" src='+movies[i].poster+ '>\n' +
+                  '<div class="media-body d-flex flex-column align-self-center">\n' +
+                    '<div class="heading">\n' +
+                      '<h2 class="mt-0 mb-1" id="name">'+movies[i].name+'</h2>\n' +
+                    '</div>\n' +
+                    '<div class="d-flex flex-row justify-content-start mb-2">\n' +
+                      '<div id="genre">'+movies[i].genre+'\n' +
+                      '</div>\n' +
+                      '<div class="mx-2" id="duration">'+movies[i].duration+'\n' +
+                      '</div>\n' +
+                      '<div id="agelimit">'+movies[i].agelimit+'\n' +
+                      '</div>\n' +
+                    '</div>\n' +
+                    '<div id="description">'+movies[i].description+'\n' +
+                    '</div>\n' +
+                    '<div class="roomarea d-flex flex-row">\n' +
+                      '<div class="rooms d-flex flex-column">\n' +
+                        '<div id="room1'+movies[i].id+'">\n' +
+                          '<b class="mr-4">Room 1</b>\n'
+                          +
+                        '</div>\n' +
+                        '<div id="room2'+movies[i].id+'">\n' +
+                          '<b class="mr-4">Room 2</b>\n' +
+                          '</div>\n' +
+                        '<div id="room3'+movies[i].id+'">\n' +
+                          '<b class="mr-4">Room 3</b>\n' +
+                          '</div>\n' +
+                        '</div>\n' +
+                      '<div id="reservearea" class="ml-3">\n' +
+                        '<p>Do you want to buy tickets for this time?</p>\n' +
+                        '<button type="button" name="reserve" class="btn btn-primary btn-rounded">Reserve</button>\n' +
+                      '</div>\n' +
+                    '</div>\n' +
+                    '</div>');
+
+        for (var k = 0; k < movies[i].room1.length; k++) {
+              $('#room1'+movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded" data-toggle="tooltip" title="Price: 4e" onclick="reserve()">'+movies[i].room1[k]+'</button>');
+           }
+         for (var z = 0; z < movies[i].room2.length; z++) {
+              $('#room2'+movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded" data-toggle="tooltip" title="Price: 4e" onclick="reserve()">'+movies[i].room2[z]+'</button>');
+            }
+         for (var x = 0; x < movies[i].room3.length; x++) {
+              $('#room3'+movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded" data-toggle="tooltip" title="Price: 4e" onclick="reserve()">'+movies[i].room3[x]+'</button>');
+            }
+          }
+
+    }
+    function today(){
+        document.getElementById("move").style.left = "300px" ;
+        document.getElementById("first").style.opacity ="1";
+        document.getElementById("second").style.opacity ="0";
+        document.getElementById("third").style.opacity ="0";
+        document.getElementById("fourth").style.opacity ="0";
+
+    }
+    function tomorrow(){
+        document.getElementById("move").style.left = "-750px" ;
+        document.getElementById("first").style.opacity ="0";
+        document.getElementById("second").style.opacity ="1";
+        document.getElementById("third").style.opacity ="0";
+        document.getElementById("fourth").style.opacity ="0";
+    }
+    function dayafter(){
+        document.getElementById("move").style.left = "-1800px" ;
+        document.getElementById("first").style.opacity ="0";
+        document.getElementById("second").style.opacity ="0";
+        document.getElementById("third").style.opacity ="1";
+        document.getElementById("fourth").style.opacity ="0";
+    }
+    function dayafter2(){
+        document.getElementById("move").style.left = "-2850px" ;
+        document.getElementById("first").style.opacity ="0";
+        document.getElementById("second").style.opacity ="0";
+        document.getElementById("third").style.opacity ="0";
+        document.getElementById("fourth").style.opacity ="1";
+    }
+    </script>
 
   </body>
 </html>
