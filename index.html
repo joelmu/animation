@@ -14,6 +14,11 @@
     .media{height: 350px;
         width: 1050px;
     }
+    .scheduleCarousel{
+      left: 400px;
+      width: 1450px;
+      overflow: hidden;
+    }
     .move{
       transition: all 1s ease;
       position: relative;
@@ -53,7 +58,8 @@
     </style>
 
   </head>
-  <body onload="create()">
+  <body onload="create()"
+        background=" http://ak1.picdn.net/shutterstock/videos/16747171/thumb/1.jpg">
 
     <!--Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -105,16 +111,22 @@
     <button type="button" name="dayafter2" class="btn btn-outline-secondary waves-effect" onclick="dayafter2()">18.12</button>
   </div>
 
+<div class="scheduleCarousel d-flex">
   <div class="move d-flex flex-row" id="move">
     <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="first">
+      <h1>Today</h1>
     </ul>
     <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="second">
+      <h1>Tomorrow</h1>
     </ul>
     <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="third">
+      <h1>17.12</h1>
     </ul>
     <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="fourth">
+      <h1>18.12</h1>
     </ul>
   </div>
+</div>
 </div>
 
     <!-- Optional JavaScript -->
@@ -133,6 +145,7 @@
     }
     function create(){
       var movies = [{id: "1",
+                    bc: "grey",
                     poster: "https://www.movieposter.com/posters/archive/main/9/A70-4902",
                     name: "The Matrix",
                     genre: "Sci-Fi",
@@ -142,8 +155,9 @@
                     room1: ["13:00", "16:00", "20:00"],
                     room2: ["17:00", "21:00"],
                     room3: ["14:00"]
-                  },
-                  {id:"2",
+                    },
+                    {id:"2",
+                    bc: "brown",
                     poster: "https://imgc.allpostersimages.com/img/posters/titanic_u-L-F4S6CQ0.jpg",
                     name: "Titanic",
                     genre: "Drama",
@@ -153,8 +167,9 @@
                     room1: ["13:00", "15:00", "20:00"],
                     room2: ["17:00", "21:00"],
                     room3: ["14:00"]
-                  },
-                  {id: "3",
+                    },
+                    {id: "3",
+                    bc: "grey",
                     poster: "http://www.joblo.com/posters/images/full/jigsawpost5.jpg",
                     name: "Jigsaw",
                     genre: "Horror",
@@ -164,8 +179,9 @@
                     room1: ["10:00", "12:00", "17:00"],
                     room2: ["17:00", "21:00"],
                     room3: ["14:00"]
-                  },
-                  {id: "4",
+                    },
+                    {id: "4",
+                    bc: "blue",
                     poster: "http://www.joblo.com/posters/images/full/American-Assassin-Official-Poster.jpg",
                     name: "American Assassin",
                     genre: "Action",
@@ -175,8 +191,9 @@
                     room1: ["12:00", "15:30"],
                     room2: ["17:10", "21:20"],
                     room3: ["14:00", "17:00"]
-                  },
-                  {id: "5",
+                    },
+                    {id: "5",
+                    bc: "grey",
                     poster: "https://cdn3.digitalartsonline.co.uk/cmsdata/slideshow/3662115/baby-driver-rory-hi-res.jpg",
                     name: "Baby Driver",
                     genre: "Action",
