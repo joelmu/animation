@@ -34,14 +34,14 @@
 
 .owl-nav .owl-prev {
   left: 5% !important;
-  width: 5%;
-  height: 5%;
+  width: 7%;
+  height: 7%;
 }
 
 .owl-nav .owl-next {
   right: 5% !important;
-  width: 5%;
-  height: 5%;
+  width: 7%;
+  height: 7%;
 }
 
 .owl-carousel .owl-prev,
@@ -77,7 +77,7 @@
 }
 
 .owl-item {
- filter: brightness(90%) blur(2px) ;
+ filter: brightness(80%) blur(2px) ;
  pointer-events: none;
 }
 
@@ -107,7 +107,7 @@
 }
 
 .link:hover {
- color:gray;
+ color:lightgray;
 }
 
 .trailer-link-container {
@@ -140,7 +140,7 @@
         <div class="owl-carousel">
 
           <div class="item">
-            <a href="#Movie"><img src="http://placehold.it/720x347?text=1"></a>
+            <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/4c9/720_347_2/4c92c2d9bcc39f11a6a054b0e992bd0e.jpg"></a>
             <div class="inner-container">
               <div class="inner-content">
 
@@ -161,7 +161,7 @@
             </div>
 
             <div class="item">
-              <a href="#Movie"><img src="http://placehold.it/720x347?text=2"></a>
+              <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/c5a/720_347_2/c5a12d3dee750fa3832faeaa2d87a5e8.JPG"></a>
               <div class="inner-container">
                 <div class="inner-content">
 
@@ -182,7 +182,7 @@
               </div>
 
               <div class="item">
-                <a href="#Movie"><img src="http://placehold.it/720x347?text=3"></a>
+                <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/74c/720_347_2/74cbfe7c9a7c58f77e456d8c332efc34.jpg"></a>
                 <div class="inner-container">
                   <div class="inner-content">
 
@@ -203,7 +203,7 @@
                 </div>
 
                 <div class="item">
-                  <a href="#Movie"><img src="http://placehold.it/720x347?text=4"></a>
+                  <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/908/720_347_2/908e9f1338ec751e24fa02a11820145e.jpg"></a>
                   <div class="inner-container">
                     <div class="inner-content">
 
@@ -224,7 +224,7 @@
                   </div>
 
                   <div class="item">
-                    <a href="#Movie"><img src="http://placehold.it/720x347?text=5"></a>
+                    <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/807/720_347_2/807761166b82ab4f59c6475b8b5e4416.jpg"></a>
                     <div class="inner-container">
                       <div class="inner-content">
 
@@ -245,7 +245,7 @@
                    </div>
 
                    <div class="item">
-                     <a href="#Movie"><img src="http://placehold.it/720x347?text=6"></a>
+                     <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/f1d/720_347_2/f1d029eaaa5a563ad75365b59c385bb6.jpg"></a>
                      <div class="inner-container">
                        <div class="inner-content">
 
@@ -265,6 +265,27 @@
                       </div>
                      </div>
 
+                     <!-- <div class="item">
+                       <a href="#Movie"><img src="http://placehold.it/720x347?text=7"></a>
+                       <div class="inner-container">
+                         <div class="inner-content">
+
+                             <div class="movie-title">
+                                 <a href="#Movie"><span class="title-link">MEME in the Placeholder</span></a>
+                             </div>
+
+                             <div class="trailer-link-container">
+                                 <a href="#Trailer"><span class="link">Watch trailer</span></a>
+                             </div>
+
+                             <div class="booking-link-container">
+                                 <a href="#Booking"><span class="link">Book tickets</span></a>
+                             </div>
+
+                          </div>
+                        </div>
+                       </div> -->
+
           </div>
 </div>
 
@@ -277,7 +298,10 @@
         loop: true,
         items: 1,
         nav:true,
-        navText: ["<img src='arrowleft.png' draggable='false' style='-moz-user-select: none;'>","<img src='arrowright.png' draggable='false' style='-moz-user-select: none;'>"]
+        navText: ["<img src='arrowleft.png' draggable='false' style='-moz-user-select: none;'>","<img src='arrowright.png' draggable='false' style='-moz-user-select: none;'>"],
+        autoplay:true,
+        autoplayTimeout:2500,
+        autoplayHoverPause:true
       });
     </script>
 
