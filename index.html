@@ -1,288 +1,426 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>NorthKino</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style media="screen">
-    .media{height: 350px;
-        width: 1050px;
-    }
-    .scheduleCarousel{
-      left: 400px;
-      width: 1450px;
-      overflow: hidden;
-    }
-    .move{
-      transition: all 1s ease;
-      position: relative;
-      width: 4200px;
-      left: 300px;
-    }
-    #reservearea{
-      transition: all 1s;
-      height: 0;
-      opacity: 0;
-      background-color: grey;
-      transform: rotateX(-90deg);
-      transform-origin: top;
-      border: 1px black solid;
-      border-radius: 10px;
-    }
-    .visible{
-      opacity: 1 !important;
-      transform: rotateX(0deg) !important;
-      height: 75% !important;
-    }
-    .schedulelist{
-      transition: all 1s ease;
-    }
-    #first{
-      opacity: 1;
-    }
-    #second{
-      opacity: 0;
-    }
-    #third{
-      opacity: 0;
-    }
-    #fourth{
-      opacity: 0;
-    }
-    </style>
+<head>
+  <title>NorthKino</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  </head>
-  <body onload="create()"
-        background=" http://ak1.picdn.net/shutterstock/videos/16747171/thumb/1.jpg">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Greensock -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 
-    <!--Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">NorthKino</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body onload="create()" onload="movielist()">
+
+  <!--Navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">NorthKino</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Price List</a>
-      </li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="priceList.html">Price List</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           City
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Helsinki</a>
-          <a class="dropdown-item" href="#">Turku</a>
-          <a class="dropdown-item" href="#">Tampere</a>
-          <a class="dropdown-item" href="#">Oulu</a>
-          <a class="dropdown-item" href="#">Rovaniemi</a>
+          <a class="dropdown-item" href="#" onclick="helsinki()">Helsinki</a>
+          <a class="dropdown-item" href="#" onclick="turku()">Turku</a>
+          <a class="dropdown-item" href="#" onclick="tampere()">Tampere</a>
+          <a class="dropdown-item" href="#" onclick="oulu()">Oulu</a>
+          <a class="dropdown-item" href="#" onclick="rovaniemi()">Rovaniemi</a>
         </div>
       </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+      <li class="navbar-brand" id="city">Oulu</li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+
+
+
+
+
+  <!--movie schedule -->
+
+  <div class="schedule d-flex flex-column align-items-center">
+    <div class="timechooser d-flex justify-content-center">
+      <button type="button" name="today" class="btn btn-lg btn-success waves-effect mr-sm-2" onclick="today()">Today</button>
+      <button type="button" name="tomorrow" class="btn btn-lg btn-success waves-effect mr-sm-2" onclick="tomorrow()">Tomorrow</button>
+      <button type="button" name="dayafter" class="btn btn-lg btn-success waves-effect mr-sm-2" onclick="dayafter()">17.12</button>
+      <button type="button" name="dayafter2" class="btn btn-lg btn-success waves-effect mr-sm-2" onclick="dayafter2()">18.12</button>
+    </div>
+
+    <div class="move d-flex flex-row align-items-center" id="move">
+      <ul class="schedulelist d-flex flex-column align-items-center" id="first">
+        <h1 id="title">Today</h1>
+      </ul>
+    </div>
   </div>
-</nav>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 
-
-
-
-
-<!--movie schedule -->
-
-<div class="schedule">
-  <div class="timechooser d-flex justify-content-center">
-    <button type="button" name="today"  class="btn btn-outline-secondary waves-effect" onclick="today()">Today</button>
-    <button type="button" name="tomorrow" class="btn btn-outline-secondary waves-effect" onclick="tomorrow()">Tomorrow</button>
-    <button type="button" name="dayafter" class="btn btn-outline-secondary waves-effect" onclick="dayafter()">17.12</button>
-    <button type="button" name="dayafter2" class="btn btn-outline-secondary waves-effect" onclick="dayafter2()">18.12</button>
-  </div>
-
-<div class="scheduleCarousel d-flex">
-  <div class="move d-flex flex-row" id="move">
-    <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="first">
-      <h1>Today</h1>
-    </ul>
-    <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="second">
-      <h1>Tomorrow</h1>
-    </ul>
-    <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="third">
-      <h1>17.12</h1>
-    </ul>
-    <ul class="schedulelist list-unstyled d-flex flex-column align-items-center" id="fourth">
-      <h1>18.12</h1>
-    </ul>
-  </div>
-</div>
-</div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-
-    <script>
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
+  <script>
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip();
     });
-    function reserve(){
-        document.getElementById("reservearea").classList.toggle("visible");
-    }
-    function create(){
-      var movies = [{id: "1",
-                    bc: "grey",
-                    poster: "https://www.movieposter.com/posters/archive/main/9/A70-4902",
-                    name: "The Matrix",
-                    genre: "Sci-Fi",
-                    duration: "100min",
-                    agelimit: "16+",
-                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
-                    room1: ["13:00", "16:00", "20:00"],
-                    room2: ["17:00", "21:00"],
-                    room3: ["14:00"]
-                    },
-                    {id:"2",
-                    bc: "brown",
-                    poster: "https://imgc.allpostersimages.com/img/posters/titanic_u-L-F4S6CQ0.jpg",
-                    name: "Titanic",
-                    genre: "Drama",
-                    duration: "80min",
-                    agelimit: "12+",
-                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
-                    room1: ["13:00", "15:00", "20:00"],
-                    room2: ["17:00", "21:00"],
-                    room3: ["14:00"]
-                    },
-                    {id: "3",
-                    bc: "grey",
-                    poster: "http://www.joblo.com/posters/images/full/jigsawpost5.jpg",
-                    name: "Jigsaw",
-                    genre: "Horror",
-                    duration: "92min",
-                    agelimit: "16+",
-                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
-                    room1: ["10:00", "12:00", "17:00"],
-                    room2: ["17:00", "21:00"],
-                    room3: ["14:00"]
-                    },
-                    {id: "4",
-                    bc: "blue",
-                    poster: "http://www.joblo.com/posters/images/full/American-Assassin-Official-Poster.jpg",
-                    name: "American Assassin",
-                    genre: "Action",
-                    duration: "112min",
-                    agelimit: "16+",
-                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
-                    room1: ["12:00", "15:30"],
-                    room2: ["17:10", "21:20"],
-                    room3: ["14:00", "17:00"]
-                    },
-                    {id: "5",
-                    bc: "grey",
-                    poster: "https://cdn3.digitalartsonline.co.uk/cmsdata/slideshow/3662115/baby-driver-rory-hi-res.jpg",
-                    name: "Baby Driver",
-                    genre: "Action",
-                    duration: "150min",
-                    agelimit: "12+",
-                    description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
-                    room1: ["13:00", "15:00", "20:00"],
-                    room2: ["17:00", "21:00"],
-                    room3: ["14:00"]
-                  }];
-        for (var i = 0; i < movies.length; i++) {
-        $('.schedulelist').append('<li class="media" style="background-color:'+movies[i].bc+'">\n' +
-                  '<img class="d-flex align-self-center mr-3" alt="poster" width="200" height="300" id="poster" src='+movies[i].poster+ '>\n' +
-                  '<div class="media-body d-flex flex-column align-self-center">\n' +
-                    '<div class="heading">\n' +
-                      '<h2 class="mt-0 mb-1" id="name">'+movies[i].name+'</h2>\n' +
-                    '</div>\n' +
-                    '<div class="d-flex flex-row justify-content-start mb-2">\n' +
-                      '<div id="genre">'+movies[i].genre+'\n' +
-                      '</div>\n' +
-                      '<div class="mx-2" id="duration">'+movies[i].duration+'\n' +
-                      '</div>\n' +
-                      '<div id="agelimit">'+movies[i].agelimit+'\n' +
-                      '</div>\n' +
-                    '</div>\n' +
-                    '<div id="description">'+movies[i].description+'\n' +
-                    '</div>\n' +
-                    '<div class="roomarea d-flex flex-row">\n' +
-                      '<div class="rooms d-flex flex-column">\n' +
-                        '<div id="room1'+movies[i].id+'">\n' +
-                          '<b class="mr-4">Room 1</b>\n'
-                          +
-                        '</div>\n' +
-                        '<div id="room2'+movies[i].id+'">\n' +
-                          '<b class="mr-4">Room 2</b>\n' +
-                          '</div>\n' +
-                        '<div id="room3'+movies[i].id+'">\n' +
-                          '<b class="mr-4">Room 3</b>\n' +
-                          '</div>\n' +
-                        '</div>\n' +
-                      '<div id="reservearea" class="ml-3">\n' +
-                        '<p>Do you want to buy tickets for this time?</p>\n' +
-                        '<button type="button" name="reserve" class="btn btn-primary btn-rounded">Reserve</button>\n' +
-                      '</div>\n' +
-                    '</div>\n' +
-                    '</div>');
 
+    function reserve(clicked_id) {
+      var idarr = [];
+      var x = clicked_id;
+      idarr.push(clicked_id);
+      var time = clicked_id.substr(1);
+      if (clicked_id != idarr[idarr.length - 2]) {
+        $('.reservearea').removeClass('visible');
+        $('#' + x.charAt(0)).addClass('visible');
+        $('#' + x.charAt(0) + 'inner').text(time);
+      } else {
+        $('#' + x.charAt(0)).removeClass('visible');
+      }
+
+
+    }
+
+    function create() {
+      var movies = [{
+          id: "1",
+          bc: "grey",
+          poster: "https://www.movieposter.com/posters/archive/main/9/A70-4902",
+          name: "The Matrix",
+          genre: "Sci-Fi",
+          duration: "100min",
+          agelimit: "16+",
+          description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+          room1: ["13:00", "16:00", "20:00"],
+          room2: ["17:00", "21:00"],
+          room3: ["14:00"]
+        },
+        {
+          id: "2",
+          bc: "brown",
+          poster: "https://imgc.allpostersimages.com/img/posters/titanic_u-L-F4S6CQ0.jpg",
+          name: "Titanic",
+          genre: "Drama",
+          duration: "80min",
+          agelimit: "12+",
+          description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+          room1: ["13:00", "15:00", "20:00"],
+          room2: ["17:00", "21:00"],
+          room3: ["14:00"]
+        },
+        {
+          id: "3",
+          bc: "grey",
+          poster: "http://www.joblo.com/posters/images/full/jigsawpost5.jpg",
+          name: "Jigsaw",
+          genre: "Horror",
+          duration: "92min",
+          agelimit: "16+",
+          description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+          room1: ["10:00", "12:00", "17:00"],
+          room2: ["17:00", "21:00"],
+          room3: ["14:00"]
+        },
+        {
+          id: "4",
+          bc: "blue",
+          poster: "http://www.joblo.com/posters/images/full/American-Assassin-Official-Poster.jpg",
+          name: "American Assassin",
+          genre: "Action",
+          duration: "112min",
+          agelimit: "16+",
+          description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+          room1: ["12:00", "15:30"],
+          room2: ["17:10", "21:20"],
+          room3: ["14:00", "17:00"]
+        },
+        {
+          id: "5",
+          bc: "grey",
+          poster: "https://cdn3.digitalartsonline.co.uk/cmsdata/slideshow/3662115/baby-driver-rory-hi-res.jpg",
+          name: "Baby Driver",
+          genre: "Action",
+          duration: "150min",
+          agelimit: "12+",
+          description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+          room1: ["13:00", "15:00", "20:00"],
+          room2: ["17:00", "21:00"],
+          room3: ["14:00"]
+        },
+        {
+          id: "6",
+          bc: "grey",
+          poster: "https://cdn.empireonline.com/jpg/70/0/0/1280/960/aspectfit/0/0/0/0/0/0/c/articles/599f53741deb298668eb8728/blade-runner-2049-poster.jpg",
+          name: "Blade Runner 2049",
+          genre: "Thriller",
+          duration: "150min",
+          agelimit: "16+",
+          description: "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.",
+          room1: ["10:00", "15:00"],
+          room2: ["17:00"],
+          room3: ["14:00", "18:00", "20:00"]
+        }
+      ];
+      for (var i = 0; i < movies.length; i++) {
+        $('.schedulelist').append('<li style="box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); margin-bottom: 20px;" class="media">\n' +
+          '<div class="view hm-zoom">'+
+          '<img class="d-flex align-self-center mr-3 hoverable" alt="poster" width="200" height="300" id="poster" src=' + movies[i].poster + '></div>\n' +
+          '<div class="media-body d-flex flex-column align-self-center">\n' +
+          '<div class="heading">\n' +
+          '<h2 class="mt-0 mb-1" id="name">' + movies[i].name + '</h2>\n' +
+          '</div>\n' +
+          '<div class="d-flex flex-row justify-content-start mb-2">\n' +
+          '<div id="genre">' + movies[i].genre + '\n' +
+          '</div>\n' +
+          '<div class="mx-2" id="duration">' + movies[i].duration + '\n' +
+          '</div>\n' +
+          '<div id="agelimit">' + movies[i].agelimit + '\n' +
+          '</div>\n' +
+          '</div>\n' +
+          '<div id="description">' + movies[i].description + '\n' +
+          '</div>\n' +
+          '<div class="roomarea d-flex flex-row">\n' +
+          '<div class="rooms d-flex flex-column">\n' +
+          '<div id="room1' + movies[i].id + '">\n' +
+          '<b class="mr-4">Room 1</b>\n' +
+          '</div>\n' +
+          '<div id="room2' + movies[i].id + '">\n' +
+          '<b class="mr-4">Room 2</b>\n' +
+          '</div>\n' +
+          '<div id="room3' + movies[i].id + '">\n' +
+          '<b class="mr-4">Room 3</b>\n' +
+          '</div>\n' +
+          '</div>\n' +
+          '<div id="' + movies[i].id + '" class="reservearea ml-3">\n' +
+          '<p>Do you want to buy tickets for</p><p>' + movies[i].name + '</p><p id="' + movies[i].id + 'inner"></p>\n' +
+          '<button type="button" name="reserve" class="btn btn-primary btn-rounded">Reserve</button>\n' +
+          '</div>\n' +
+          '</div>\n' +
+          '</div>');
+      }
+
+      for (var i = 0; i < movies.length; i++) {
         for (var k = 0; k < movies[i].room1.length; k++) {
-              $('#room1'+movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded" data-toggle="tooltip" title="Price: 4e" onclick="reserve()">'+movies[i].room1[k]+'</button>');
-           }
-         for (var z = 0; z < movies[i].room2.length; z++) {
-              $('#room2'+movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded" data-toggle="tooltip" title="Price: 4e" onclick="reserve()">'+movies[i].room2[z]+'</button>');
-            }
-         for (var x = 0; x < movies[i].room3.length; x++) {
-              $('#room3'+movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded" data-toggle="tooltip" title="Price: 4e" onclick="reserve()">'+movies[i].room3[x]+'</button>');
-            }
+          $('#room1' + movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded hoverable mr-2 mb-2" id="' + movies[i].id + movies[i].room1[k] + '" data-toggle="tooltip" title="Price: 4e" onclick="reserve(this.id)">' + movies[i]
+            .room1[k] + '</button>');
+        }
+        for (var z = 0; z < movies[i].room2.length; z++) {
+          $('#room2' + movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded mr-2 mb-2" id="' + movies[i].id + movies[i].room2[z] + '" data-toggle="tooltip" title="Price: 4e" onclick="reserve(this.id)">' + movies[i]
+            .room2[z] + '</button>');
+        }
+        for (var x = 0; x < movies[i].room3.length; x++) {
+          $('#room3' + movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded mr-2 mb-2" id="' + movies[i].id + movies[i].room3[x] + '" data-toggle="tooltip" title="Price: 4e" onclick="reserve(this.id)">' + movies[i]
+            .room3[x] + '</button>');
+        }
+      }
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px"
+        });
+
+    }
+
+    function today() {
+      TweenLite.to(document.getElementById("move"), // element
+        0.1, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1500px",
+          onComplete: function() {
+            $('#title').text('Today')
           }
+        });
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px",
+          delay: 0.1
+        });
+    }
 
+    function tomorrow() {
+      TweenLite.to(document.getElementById("move"), // element
+        0.1, // duration
+        { // tween parameters
+          opacity: 0,
+          right: "-1000px",
+          onComplete: function() {
+            $('#title').text('Tomorrow')
+          }
+        });
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px",
+          delay: 0.1
+        });
     }
-    function today(){
-        document.getElementById("move").style.left = "300px" ;
-        document.getElementById("first").style.opacity ="1";
-        document.getElementById("second").style.opacity ="0";
-        document.getElementById("third").style.opacity ="0";
-        document.getElementById("fourth").style.opacity ="0";
 
+    function dayafter() {
+      TweenLite.to(document.getElementById("move"), // element
+        0.1, // duration
+        { // tween parameters
+          opacity: 0,
+          right: "-1000px",
+          onComplete: function() {
+            $('#title').text('17.12')
+          }
+        });
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px",
+          delay: 0.1
+        });
     }
-    function tomorrow(){
-        document.getElementById("move").style.left = "-750px" ;
-        document.getElementById("first").style.opacity ="0";
-        document.getElementById("second").style.opacity ="1";
-        document.getElementById("third").style.opacity ="0";
-        document.getElementById("fourth").style.opacity ="0";
-    }
-    function dayafter(){
-        document.getElementById("move").style.left = "-1800px" ;
-        document.getElementById("first").style.opacity ="0";
-        document.getElementById("second").style.opacity ="0";
-        document.getElementById("third").style.opacity ="1";
-        document.getElementById("fourth").style.opacity ="0";
-    }
-    function dayafter2(){
-        document.getElementById("move").style.left = "-2850px" ;
-        document.getElementById("first").style.opacity ="0";
-        document.getElementById("second").style.opacity ="0";
-        document.getElementById("third").style.opacity ="0";
-        document.getElementById("fourth").style.opacity ="1";
-    }
-    </script>
 
-  </body>
+    function dayafter2() {
+      TweenLite.to(document.getElementById("move"), // element
+        0.1, // duration
+        { // tween parameters
+          opacity: 0,
+          right: "-1000px",
+          onComplete: function() {
+            $('#title').text('18.12')
+          }
+        });
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px",
+          delay: 0.1
+        });
+    }
+
+    function helsinki() {
+      TweenLite.to(document.getElementById("move"), // element
+        0.1, // duration
+        { // tween parameters
+          opacity: 0,
+          right: "-1000px",
+          onComplete: function() {
+            $('#city').text('Helsinki')
+          }
+        });
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px",
+          delay: 0.1
+        });
+    }
+
+    function turku() {
+      TweenLite.to(document.getElementById("move"), // element
+        0.1, // duration
+        { // tween parameters
+          opacity: 0,
+          right: "-1000px",
+          onComplete: function() {
+            $('#city').text('Turku')
+          }
+        });
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px",
+          delay: 0.1
+        });
+    }
+
+    function tampere() {
+      TweenLite.to(document.getElementById("move"), // element
+        0.1, // duration
+        { // tween parameters
+          opacity: 0,
+          right: "-1000px",
+          onComplete: function() {
+            $('#city').text('Tampere')
+          }
+        });
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px",
+          delay: 0.1
+        });
+    }
+
+    function oulu() {
+      TweenLite.to(document.getElementById("move"), // element
+        0.1, // duration
+        { // tween parameters
+          opacity: 0,
+          right: "-1000px",
+          onComplete: function() {
+            $('#city').text('Oulu')
+          }
+        });
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px",
+          delay: 0.1
+        });
+    }
+
+    function rovaniemi() {
+      TweenLite.to(document.getElementById("move"), // element
+        0.1, // duration
+        { // tween parameters
+          opacity: 0,
+          right: "-1000px",
+          onComplete: function() {
+            $('#city').text('Rovaniemi')
+          }
+        });
+      TweenLite.from(document.getElementById("move"), // element
+        0.4, // duration
+        { // tween parameters
+          opacity: 0,
+          left: "-1000px",
+          delay: 0.1
+        });
+    }
+  </script>
+
+</body>
+
 </html>
