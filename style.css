@@ -71,7 +71,7 @@ html {
 }
 
 .screen {
-  height: 150px;
+  height: 180px;
   position: relative;
   text-align: center;
   border-bottom: 5px solid #d8d8d8;
@@ -107,7 +107,7 @@ ol {
 }
 
 .seat input[type=checkbox]:checked+label {
-  background: #bada55;
+  background: #e4b72f;
   animation-name: rubberBand;
   animation-duration: 300ms;
   animation-fill-mode: both;
@@ -122,7 +122,7 @@ ol {
   font-weight: bold;
   line-height: 1.5rem;
   padding: 4px 0;
-  background: #F42536;
+  background: #25f42c;
   border-radius: 5px;
   animation-duration: 300ms;
   animation-fill-mode: both;
