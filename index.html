@@ -30,29 +30,29 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link navi" href="index.html">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="priceList.html">Price List</a>
+          <a class="nav-link navi" href="priceList.html">Price List</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle navi" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           City
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#" onclick="helsinki()">Helsinki</a>
-          <a class="dropdown-item" href="#" onclick="turku()">Turku</a>
-          <a class="dropdown-item" href="#" onclick="tampere()">Tampere</a>
-          <a class="dropdown-item" href="#" onclick="oulu()">Oulu</a>
-          <a class="dropdown-item" href="#" onclick="rovaniemi()">Rovaniemi</a>
+          <a class="dropdown-item navi" href="#" onclick="helsinki()">Helsinki</a>
+          <a class="dropdown-item navi" href="#" onclick="turku()">Turku</a>
+          <a class="dropdown-item navi" href="#" onclick="tampere()">Tampere</a>
+          <a class="dropdown-item navi" href="#" onclick="oulu()">Oulu</a>
+          <a class="dropdown-item navi" href="#" onclick="rovaniemi()">Rovaniemi</a>
         </div>
       </li>
       <li class="navbar-brand" id="city">Oulu</li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search for movie" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
@@ -66,11 +66,11 @@
   <!--movie schedule -->
 
   <div class="schedule d-flex flex-column align-items-center">
-    <div class="timechooser d-flex justify-content-center">
-      <button type="button" name="today" class="btn btn-lg btn-success waves-effect mr-sm-2" onclick="today()">Today</button>
-      <button type="button" name="tomorrow" class="btn btn-lg btn-success waves-effect mr-sm-2" onclick="tomorrow()">Tomorrow</button>
-      <button type="button" name="dayafter" class="btn btn-lg btn-success waves-effect mr-sm-2" onclick="dayafter()">17.12</button>
-      <button type="button" name="dayafter2" class="btn btn-lg btn-success waves-effect mr-sm-2" onclick="dayafter2()">18.12</button>
+    <div class="timechooser d-flex justify-content-center mt-2">
+      <button type="button" name="today" class="btn btn1 btn-lg btn-success waves-effect mr-sm-2" onclick="today()">Today</button>
+      <button type="button" name="tomorrow" class="btn btn1 btn-lg btn-success waves-effect mr-sm-2" onclick="tomorrow()">Tomorrow</button>
+      <button type="button" name="dayafter" class="btn btn1 btn-lg btn-success waves-effect mr-sm-2" onclick="dayafter()">17.12</button>
+      <button type="button" name="dayafter2" class="btn btn1 btn-lg btn-success waves-effect mr-sm-2" onclick="dayafter2()">18.12</button>
     </div>
 
     <div class="move d-flex flex-row align-items-center" id="move">
@@ -190,8 +190,7 @@
       ];
       for (var i = 0; i < movies.length; i++) {
         $('.schedulelist').append('<li style="box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); margin-bottom: 20px;" class="media">\n' +
-          '<div class="view hm-zoom">'+
-          '<img class="d-flex align-self-center mr-3 hoverable" alt="poster" width="200" height="300" id="poster" src=' + movies[i].poster + '></div>\n' +
+          '<img class="d-flex align-self-center mr-3 hoverable" alt="poster" width="200" height="300" id="poster" src=' + movies[i].poster + '>\n' +
           '<div class="media-body d-flex flex-column align-self-center">\n' +
           '<div class="heading">\n' +
           '<h2 class="mt-0 mb-1" id="name">' + movies[i].name + '</h2>\n' +
@@ -220,7 +219,7 @@
           '</div>\n' +
           '<div id="' + movies[i].id + '" class="reservearea ml-3">\n' +
           '<p>Do you want to buy tickets for</p><p>' + movies[i].name + '</p><p id="' + movies[i].id + 'inner"></p>\n' +
-          '<button type="button" name="reserve" class="btn btn-primary btn-rounded">Reserve</button>\n' +
+          '<button type="button" name="reserve" onclick="out()" class="btn btn2 btn-primary btn-rounded" ><a style="color:white" href="reserve.html">Reserve</a></button>\n' +
           '</div>\n' +
           '</div>\n' +
           '</div>');
@@ -228,15 +227,15 @@
 
       for (var i = 0; i < movies.length; i++) {
         for (var k = 0; k < movies[i].room1.length; k++) {
-          $('#room1' + movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded hoverable mr-2 mb-2" id="' + movies[i].id + movies[i].room1[k] + '" data-toggle="tooltip" title="Price: 4e" onclick="reserve(this.id)">' + movies[i]
+          $('#room1' + movies[i].id).append('<button type="button" name="time" class="btn btn2 btn-info btn-rounded hoverable mr-2 mb-2" id="' + movies[i].id + movies[i].room1[k] + '" data-toggle="tooltip" title="Price: 4e" onclick="reserve(this.id)">' + movies[i]
             .room1[k] + '</button>');
         }
         for (var z = 0; z < movies[i].room2.length; z++) {
-          $('#room2' + movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded mr-2 mb-2" id="' + movies[i].id + movies[i].room2[z] + '" data-toggle="tooltip" title="Price: 4e" onclick="reserve(this.id)">' + movies[i]
+          $('#room2' + movies[i].id).append('<button type="button" name="time" class="btn btn2 btn-info btn-rounded mr-2 mb-2" id="' + movies[i].id + movies[i].room2[z] + '" data-toggle="tooltip" title="Price: 4e" onclick="reserve(this.id)">' + movies[i]
             .room2[z] + '</button>');
         }
         for (var x = 0; x < movies[i].room3.length; x++) {
-          $('#room3' + movies[i].id).append('<button type="button" name="time" class="btn btn-info btn-rounded mr-2 mb-2" id="' + movies[i].id + movies[i].room3[x] + '" data-toggle="tooltip" title="Price: 4e" onclick="reserve(this.id)">' + movies[i]
+          $('#room3' + movies[i].id).append('<button type="button" name="time" class="btn btn2 btn-info btn-rounded mr-2 mb-2" id="' + movies[i].id + movies[i].room3[x] + '" data-toggle="tooltip" title="Price: 4e" onclick="reserve(this.id)">' + movies[i]
             .room3[x] + '</button>');
         }
       }
