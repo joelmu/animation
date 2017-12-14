@@ -1,5 +1,6 @@
 /*index.html
 */
+
 .media {
   height: 350px;
   width: 1050px;
@@ -30,13 +31,13 @@
   height: 100px !important;
 }
 
-.navi{
-  transition: all 0.5s;
+.navi {
+  transition: all 0.3s;
 }
 
-.navi:hover{
+.navi:hover {
   transform: rotateX(360deg);
-  color:rgba(216, 224, 15, 0.77);
+  color: rgba(15, 233, 47, 1);
 }
 
 .btn1 {

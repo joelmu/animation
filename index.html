@@ -729,7 +729,7 @@
     function create() {
       var movies = [{
           id: "1",
-          bc: "grey",
+          bc: "rgba(17, 33, 85, 0.41)",
           poster: "https://www.movieposter.com/posters/archive/main/9/A70-4902",
           name: "The Matrix",
           genre: "Sci-Fi",
@@ -1051,39 +1051,41 @@
     function boxes() {
       var checked_boxes = $('input:checkbox:checked').length;
 
-    TweenLite.to(document.getElementById("screen"), 2, {text:"This is the new text", ease:Linear.easeNone});
+      TweenLite.to(document.getElementById("screen"), 2, {
+        text: "This is the new text",
+        ease: Linear.easeNone
+      });
 
-    TweenLite.to(document.getElementById("price"), // element
-       0.12, // duration
-       { // tween parameters
-         opacity: 0,
-         onComplete: function() {
-           $('#price').text(checked_boxes * 4 + 'e');
-         }
-       });
-     TweenLite.to(document.getElementById("price"), // element
+      TweenLite.to(document.getElementById("price"), // element
+        0.12, // duration
+        { // tween parameters
+          opacity: 0,
+          onComplete: function() {
+            $('#price').text(checked_boxes * 4 + 'e');
+          }
+        });
+      TweenLite.to(document.getElementById("price"), // element
         0.12, // duration
         { // tween parameters
           opacity: 1,
           delay: 0.12,
         });
 
-        TweenLite.to(document.getElementById("amount"), // element
-           0.12, // duration
-           { // tween parameters
-             opacity: 0,
-             onComplete: function() {
-               $('#amount').text(checked_boxes);
-             }
-           });
-         TweenLite.to(document.getElementById("amount"), // element
-            0.12, // duration
-            { // tween parameters
-              opacity: 1,
-              delay: 0.12,
-            });
+      TweenLite.to(document.getElementById("amount"), // element
+        0.12, // duration
+        { // tween parameters
+          opacity: 0,
+          onComplete: function() {
+            $('#amount').text(checked_boxes);
+          }
+        });
+      TweenLite.to(document.getElementById("amount"), // element
+        0.12, // duration
+        { // tween parameters
+          opacity: 1,
+          delay: 0.12,
+        });
     }
-
   </script>
 
   <!-- Optional JavaScript -->
