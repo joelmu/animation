@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="enter()">
+<body>
   <!--Navigation bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.html">NorthKino</a>
@@ -60,10 +60,13 @@
   <div class="theater">
       <div class="screen">
         <h1>Please select a seat</h1>
-        <h5>Your order costs: <span class="price">0</span></h5>
+        <h5>Your order costs: <span class="price">0e</span></h5>
         <h5>You have chosen <span id="amount">0</span> seat(s)</h5>
         <button type="button" name="button" class="btn btn1 btn-outline-success">Buy</button>
         <h5>Screen is here</h5>
+      </div>
+      <div class="areabetween" style="height:30px">
+
       </div>
       <ol class="seatarea">
         <li class="row row--1">
@@ -469,8 +472,13 @@
   <script type="text/javascript">
     function boxes(){
       var checked_boxes = $('input:checkbox:checked').length;
-      $('.price').text(checked_boxes * 4 +'e');
-      $('#amount').text(checked_boxes);
+
+      $('.price').fadeOut(200, function() {
+        $(this).text(checked_boxes * 4 +'e').fadeIn(200);
+      })
+      $('#amount').fadeOut(200, function() {
+        $(this).text(checked_boxes).fadeIn(200);
+    })
     }
   </script>
 </body>
