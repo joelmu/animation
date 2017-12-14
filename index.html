@@ -42,9 +42,6 @@
         <li class="nav-item active">
           <a class="nav-link navi" href="index.html">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link navi" href="priceList.html">Price List</a>
-        </li>
       </ul>
       <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
@@ -820,7 +817,7 @@
           '</div>\n' +
           '<div id="' + movies[i].id + '" class="reservearea ml-3">\n' +
           '<p>Do you want to buy tickets for</p><p>' + movies[i].name + '</p><p id="' + movies[i].id + 'inner"></p>\n' +
-          '<button type="button" name="reserve" onclick="out()" class="btn btn2 btn-primary btn-rounded" data-toggle="modal" data-target="#exampleModal">Reserve</button>\n' +
+          '<button type="button" name="reserve" onclick="removeboxes()" class="btn btn2 btn-primary btn-rounded" data-toggle="modal" data-target="#exampleModal">Reserve</button>\n' +
           '</div>\n' +
           '</div>\n' +
           '</div>');
@@ -1018,6 +1015,10 @@
           left: "-1000px",
           delay: 0.1
         });
+    }
+
+    function removeboxes(){
+      $('input:checkbox').removeAttr('checked');
     }
 
     function boxes(){
