@@ -815,7 +815,7 @@
           '</div>\n' +
           '<div id="' + movies[i].id + '" class="reservearea ml-3">\n' +
           '<p>Do you want to buy tickets for</p><p>' + movies[i].name + '</p><p id="' + movies[i].id + 'inner"></p>\n' +
-          '<button type="button" name="reserve" class="btn btn2 btn-primary btn-rounded" data-toggle="modal" data-target="#exampleModal">Reserve</button>\n' +
+          '<button type="button" name="reserve" class="btn btn2 btn-primary btn-rounded" onclick="removeb()" data-toggle="modal" data-target="#exampleModal">Reserve</button>\n' +
           '</div>\n' +
           '</div>\n' +
           '</div>');
@@ -845,6 +845,13 @@
           left: "-1000px"
         });
 
+    }
+
+    function removeb(){
+      $('.btn').click(function() {
+    $('input[type=checkbox]').prop('checked', false);
+    boxes();
+});
     }
 
     function today() {
