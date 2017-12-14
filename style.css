@@ -1,5 +1,16 @@
 /*index.html
 */
+body{
+background: linear-gradient(276deg, #5e9dad, #73b97d, #ebf3ec);
+background-size: 600% 600%;
+
+animation: AnimationName 10s ease infinite;
+}
+@keyframes AnimationName {
+    0%{background-position:0% 74%}
+    50%{background-position:100% 27%}
+    100%{background-position:0% 74%}
+}
 
 .media {
   height: 350px;
