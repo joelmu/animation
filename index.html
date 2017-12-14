@@ -14,9 +14,19 @@
   <!-- Greensock -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 
+  <!-- Owl Stylesheets -->
+  <link rel="stylesheet" href="assets/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/owlcarousel/assets/owl.theme.default.min.css">
+
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="carousel-style.css">
+
+  <!-- javascript -->
+  <script src="assets/vendors/jquery.min.js"></script>
+  <script src="assets/owlcarousel/owl.carousel.js"></script>
 
 </head>
+
 
 <body onload="create()" onload="movielist()">
 
@@ -59,7 +69,168 @@
   </nav>
 
 
+<!-- carousel start -->
 
+  <div class="movie-demo">
+
+
+          <div class="owl-carousel">
+
+            <div class="item">
+              <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/4c9/720_347_2/4c92c2d9bcc39f11a6a054b0e992bd0e.jpg"></a>
+              <div class="inner-container">
+                <div class="inner-content">
+
+                    <div class="movie-title">
+                        <a href="#Movie"><span class="title-link">MEME in the Jungle</span></a>
+                    </div>
+
+                    <div class="trailer-link-container">
+                        <a href="#Trailer"><span class="link">Watch trailer</span></a>
+                    </div>
+
+                    <div class="booking-link-container">
+                        <a href="#Booking"><span class="link">Book tickets</span></a>
+                    </div>
+
+                 </div>
+               </div>
+              </div>
+
+              <div class="item">
+                <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/c5a/720_347_2/c5a12d3dee750fa3832faeaa2d87a5e8.JPG"></a>
+                <div class="inner-container">
+                  <div class="inner-content">
+
+                      <div class="movie-title">
+                          <a href="#Movie"><span class="title-link">MEME in the City</span></a>
+                      </div>
+
+                      <div class="trailer-link-container">
+                          <a href="#Trailer"><span class="link">Watch trailer</span></a>
+                      </div>
+
+                      <div class="booking-link-container">
+                          <a href="#Booking"><span class="link">Book tickets</span></a>
+                      </div>
+
+                   </div>
+                 </div>
+                </div>
+
+                <div class="item">
+                  <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/74c/720_347_2/74cbfe7c9a7c58f77e456d8c332efc34.jpg"></a>
+                  <div class="inner-container">
+                    <div class="inner-content">
+
+                        <div class="movie-title">
+                            <a href="#Movie"><span class="title-link">MEME in the Tundra</span></a>
+                        </div>
+
+                        <div class="trailer-link-container">
+                            <a href="#Trailer"><span class="link">Watch trailer</span></a>
+                        </div>
+
+                        <div class="booking-link-container">
+                            <a href="#Booking"><span class="link">Book tickets</span></a>
+                        </div>
+
+                     </div>
+                   </div>
+                  </div>
+
+                  <div class="item">
+                    <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/908/720_347_2/908e9f1338ec751e24fa02a11820145e.jpg"></a>
+                    <div class="inner-container">
+                      <div class="inner-content">
+
+                          <div class="movie-title">
+                              <a href="#Movie"><span class="title-link">MEME in the Countryside</span></a>
+                          </div>
+
+                          <div class="trailer-link-container">
+                              <a href="#Trailer"><span class="link">Watch trailer</span></a>
+                          </div>
+
+                          <div class="booking-link-container">
+                              <a href="#Booking"><span class="link">Book tickets</span></a>
+                          </div>
+
+                       </div>
+                     </div>
+                    </div>
+
+                    <div class="item">
+                      <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/807/720_347_2/807761166b82ab4f59c6475b8b5e4416.jpg"></a>
+                      <div class="inner-container">
+                        <div class="inner-content">
+
+                            <div class="movie-title">
+                                <a href="#Movie"><span class="title-link">MEME in the Heaven</span></a>
+                            </div>
+
+                            <div class="trailer-link-container">
+                                <a href="#Trailer"><span class="link">Watch trailer</span></a>
+                            </div>
+
+                            <div class="booking-link-container">
+                                <a href="#Booking"><span class="link">Book tickets</span></a>
+                            </div>
+
+                         </div>
+                       </div>
+                     </div>
+
+                     <div class="item">
+                       <a href="#Movie"><img src="http://happy-cinema.ru/upload/resize_cache/iblock/f1d/720_347_2/f1d029eaaa5a563ad75365b59c385bb6.jpg"></a>
+                       <div class="inner-container">
+                         <div class="inner-content">
+
+                             <div class="movie-title">
+                                 <a href="#Movie"><span class="title-link">MEME in the Forest</span></a>
+                             </div>
+
+                             <div class="trailer-link-container">
+                                 <a href="#Trailer"><span class="link">Watch trailer</span></a>
+                             </div>
+
+                             <div class="booking-link-container">
+                                 <a href="#Booking"><span class="link">Book tickets</span></a>
+                             </div>
+
+                          </div>
+                        </div>
+                       </div>
+
+                     </div>
+
+        </div>
+
+
+
+               <script>
+                 var owl = $('.owl-carousel').owlCarousel({
+                   margin: 10,
+                   stagePadding: 500,
+                   autoWidth:true,
+                   center:true,
+                   loop: true,
+                   items: 1,
+                   nav:true,
+                   navText: ["<img src='assets/img/arrowleft.png' draggable='false' style='-moz-user-select: none;'>","<img src='assets/img/arrowright.png' draggable='false' style='-moz-user-select: none;'>"],
+                   autoplay:true,
+                   autoplayTimeout:2500,
+                   autoplayHoverPause:true
+                 });
+               </script>
+
+
+    <script src="assets/vendors/highlight.js"></script>
+    <script src="assets/js/app.js"></script>
+
+
+
+<!-- carousel end -->
 
 
 
