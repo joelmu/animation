@@ -35,8 +35,8 @@
 }
 
 .navi:hover{
-  transform: scale(1.1);
-  color:rgb(221, 127, 164);
+  transform: rotateX(360deg);
+  color:rgba(216, 224, 15, 0.77);
 }
 
 .btn1 {
@@ -59,8 +59,6 @@
   color: rgb(38, 35, 26);
 }
 
-/*Reserve.html
-*/
 html {
   font-size: 16px;
 }
