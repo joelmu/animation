@@ -91,7 +91,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#Booking"><span class="link">Book tickets</span></a>
+              <a href="#1"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -112,7 +112,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#Booking"><span class="link">Book tickets</span></a>
+              <a href="#2"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -133,7 +133,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#Booking"><span class="link">Book tickets</span></a>
+              <a href="#3"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -154,7 +154,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#Booking"><span class="link">Book tickets</span></a>
+              <a href="#4"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -175,7 +175,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#Booking"><span class="link">Book tickets</span></a>
+              <a href="#5"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -196,7 +196,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#Booking"><span class="link">Book tickets</span></a>
+              <a href="#6"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -686,7 +686,7 @@
 
     <div class="move d-flex flex-row align-items-center" id="move">
       <ul class="schedulelist d-flex flex-column align-items-center" id="first">
-        <h1 id="title">Today</h1>
+        <h1 id="title" style="margin: 15px;">Today</h1>
       </ul>
     </div>
   </div>
@@ -814,6 +814,7 @@
           '<img class="d-flex align-self-center mr-3 hoverable" alt="poster" width="200" height="300" id="poster" src=' + movies[i].poster + '>\n' +
           '<div class="media-body d-flex flex-column align-self-center">\n' +
           '<div class="heading">\n' +
+          '<a name="' + movies[i].id + '"></a>\n' +
           '<h2 class="mt-0 mb-1" id="name">' + movies[i].name + '</h2>\n' +
           '</div>\n' +
           '<div class="d-flex flex-row justify-content-start mb-2">\n' +
@@ -1093,15 +1094,15 @@
     var granimInstance = new Granim({
     element: '#canvas-basic',
     name: 'basic-gradient',
-    direction: 'left-right', // 'diagonal', 'top-bottom', 'radial'
+    direction: 'top-bottom', // 'diagonal', 'left-right', 'radial'
     opacity: [1, 1],
     isPausedWhenNotInView: true,
     states : {
         "default-state": {
             gradients: [
-                ['#c0f5cd', '#74b8b9'],
-                ['#ffffff', '#3fcc3d'],
-                ['#99c891', '#69c799']
+                ['#fff', '#99c891'],
+                ['#ffffff', '#3dccb5'],
+                ['#ffffff', '#b8b3ff']
             ]
         }
     }
