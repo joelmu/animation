@@ -692,6 +692,14 @@
   </div>
 
   <script>
+  $('a').click(function(){
+      $('html, body').animate({
+          scrollTop: $( $(this).attr('href') ).offset().top
+      }, 500);
+      return false;
+  });
+  
+
     $(document).ready(function() {
       $('[data-toggle="tooltip"]').tooltip();
     });
@@ -814,7 +822,7 @@
           '<img class="d-flex align-self-center mr-3 hoverable" alt="poster" width="200" height="300" id="poster" src=' + movies[i].poster + '>\n' +
           '<div class="media-body d-flex flex-column align-self-center">\n' +
           '<div class="heading">\n' +
-          '<a name="' + movies[i].id + '"></a>\n' +
+          '<a id="' + movies[i].id + '" name="' + movies[i].id + '"></a>\n' +
           '<h2 class="mt-0 mb-1" id="name">' + movies[i].name + '</h2>\n' +
           '</div>\n' +
           '<div class="d-flex flex-row justify-content-start mb-2">\n' +
