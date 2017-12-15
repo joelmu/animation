@@ -13,6 +13,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenLite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/CSSPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/ScrollToPlugin.min.js"></script>
+
 
   <!-- Owl Stylesheets -->
   <link rel="stylesheet" href="assets/owlcarousel/assets/owl.carousel.min.css">
@@ -91,7 +95,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#1"><span class="link">Book tickets</span></a>
+              <a href="#" class="1"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -112,7 +116,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#2"><span class="link">Book tickets</span></a>
+              <a href="#" class="2"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -133,7 +137,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#3"><span class="link">Book tickets</span></a>
+              <a href="#" class="3"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -154,7 +158,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#4"><span class="link">Book tickets</span></a>
+              <a href="#" class="4"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -175,7 +179,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#5"><span class="link">Book tickets</span></a>
+              <a href="#" class="5"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -196,7 +200,7 @@
             </div>
 
             <div class="booking-link-container">
-              <a href="#6"><span class="link">Book tickets</span></a>
+              <a href="#" class="6"><span class="link">Book tickets</span></a>
             </div>
 
           </div>
@@ -692,13 +696,19 @@
   </div>
 
   <script>
-  $('a').click(function(){
-      $('html, body').animate({
-          scrollTop: $( $(this).attr('href') ).offset().top
-      }, 500);
-      return false;
-  });
-  
+  $(".1").bind('click', { id: '#1' }, scroller);
+$(".2").bind('click', { id: '#2' }, scroller);
+$(".3").bind('click', { id: '#3' }, scroller);
+$(".4").bind('click', { id: '#4' }, scroller);
+$(".5").bind('click', { id: '#5' }, scroller);
+$(".6").bind('click', { id: '#6' }, scroller);
+
+function scroller(event){
+ var scrollYPos = $(event.data.id).offset().top;
+ event.preventDefault();
+ TweenLite.to(window, 2, {scrollTo:{y:scrollYPos, x:0}, ease:Power4.easeOut})
+ }
+
 
     $(document).ready(function() {
       $('[data-toggle="tooltip"]').tooltip();
